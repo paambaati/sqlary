@@ -1,0 +1,20 @@
+# See https://node-tap.org/docs/cli/
+# Run `npx tap --dump-config` for a listing of what can be set in this file
+files:
+  - ./tests/**/*.test.ts
+test-env:
+  - TS_NODE_PROJECT=./tests/tsconfig.json
+  - LOG_LEVEL=silent
+  - DB_FILE_NAME=salary-sqlite.test.db
+  - DB_FORCE_MODE=last # This will make sure the test DB is always a copy of only the initial migration data.
+reporter: specy
+ts: true
+before: ./tests/helpers/init-test-db.ts
+no-coverage: true
+no-coverage-report: true
+no-check-coverage: true
+# Coverage thresholds for `nyc`, in case coverage checking is enforced.
+statements: 80
+branches: 80
+functions: 80
+lines: 80
