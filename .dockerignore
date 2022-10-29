@@ -1,0 +1,12 @@
+.git
+.gitignore
+node_modules
+Dockerfile
+.dockerignore
+npm-debug.log
+dprint.json
+.nycrc.json
+.nyc_output
+coverage
+*.js
+dist
