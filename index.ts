@@ -139,6 +139,7 @@ const app = async (): Promise<void> => {
 };
 
 // NOTE: Spin up the server only when this file is run, and not when imported.
+/* istanbul ignore next */
 if (require.main === module) {
 	(async () => {
 		await app();
