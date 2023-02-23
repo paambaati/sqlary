@@ -14,7 +14,7 @@ no-coverage: true
 no-coverage-report: true
 no-check-coverage: true
 # Coverage thresholds for `nyc`, in case coverage checking is enforced.
-statements: 80
+statements: 87
 branches: 80
-functions: 80
-lines: 80
+functions: 90
+lines: 87

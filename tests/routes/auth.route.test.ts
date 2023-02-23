@@ -76,6 +76,39 @@ tap.test('routes > auth.route > getAPIKeyRoute should return an error for a vali
 	t.end();
 });
 
+tap.test('routes > auth.route > getAPIKeyRoute should return an error for a valid username but an invalid password', async (t) => {
+	t.plan(2);
+
+	const server = getFreshServer();
+	t.teardown(() => {
+		server.close();
+	});
+
+	server.route(getAPIKeyRoute);
+	await server.ready();
+
+	const inputs = {
+		username: 'admin',
+		password: 'some-random-password',
+	};
+	try {
+		const response = await server.inject({
+			method: 'POST',
+			url: '/api-key',
+			payload: inputs,
+		});
+		t.equal(response.statusCode, 401, 'should return a 401 response');
+		t.same(response.json(), {
+			username: inputs.username,
+			error: 'Credentials provided were incorrect; please try again!',
+		}, 'should return an appropriate error response');
+	} catch (err) {
+		t.fail('should not have thrown an error');
+	}
+
+	t.end();
+});
+
 tap.test('routes > auth.route > getAPIKeyRoute should return an error for an invalid set of user credentials', async (t) => {
 	t.plan(2);
 
