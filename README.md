@@ -2,6 +2,10 @@
 
 `sqlary` is an API server that exposes endpoints to modify and view salary information.
 
+> **Note**
+
+> This project was purpose-built for a coding challenge (see [problem statement](PROBLEM-STATEMENT.md)).
+
 ## Setup
 
 `sqlary` can be run in 2 ways.
